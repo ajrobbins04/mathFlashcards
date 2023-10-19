@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-
+from . import views
 
 urlpatterns = [
-    path('', include('pages.urls')), # redirects to pages by default
+    path('', views.index, name='home'), 
     path('admin/', admin.site.urls),
 ]
