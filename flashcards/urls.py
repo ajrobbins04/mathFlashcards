@@ -19,6 +19,7 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('', views.viewData, name='home'), 
+    path('', views.index, name='home'), 
+    path('view_card?<str:operation>', views.viewCard, name='view_card'),
     path('admin/', admin.site.urls),
 ]

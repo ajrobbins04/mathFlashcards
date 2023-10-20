@@ -1,5 +1,16 @@
 <!-- displays home page content -->
 {% extends 'base.html' %}
 
+{% block title %}Flashcard Selection{% endblock title %}
+
 {% block content %}
+<h1>What would you like to practice?</h1>
+<ul>
+    <!-- operation is passed into view_card w/an operation value unique to the selected link -->
+    <li><a href="{% url 'view_card' operation='addition' %}">Addition</a></li>
+    <li><a href="{% url 'view_card' operation='subtraction' %}">Subtraction</a></li>
+    <li><a href="{% url 'view_card' operation='multiplication' %}">Multiplication</a></li>
+    <li><a href="{% url 'view_card' operation='division' %}">Division</a></li>
+    <li><a href="{% url 'view_card' operation='everything' %}">Everything!</a></li>
+</ul>
 {% endblock content %}

@@ -7,39 +7,36 @@ import random
 
 def index(request):
 
-   
-    return viewCard(request)
+    HTML_STRING = render_to_string('home-view.html')
+    return HttpResponse(HTML_STRING)
 
-def viewData(request):
-    data = Subtract.objects.all()
 
+def viewCard(request, operation):
+
+    if operation == 'addition':
+        card = getCard_add(request)
+    elif operation == 'subtraction':
+        card = getCard_subtract(request)
+    elif operation == 'multiplication':
+        card = getCard_multiply(request)
+    elif operation == 'division':
+        card = getCard_divide(request)
+    elif operation == 'everything':
+        card = getCard_randomOp(request)
+    else:
+        return HttpResponseBadRequest("Invalid operation")
+    
+    # makes templates more dynamic
     context = {
-        'rows': data
+        'operation': operation.capitalize(),
+        'lhs': card.lhs,
+        'operator': card.operator,
+        'rhs': card.rhs,
+        'result': card.result  
     }
 
     HTML_STRING = render_to_string('card-view.html', context=context)
     return HttpResponse(HTML_STRING)
- 
-
-
-def viewCard(request, operator='random'):
-    if operator == '+':
-        card = getCard_add(request)
-    elif operator == '-':
-        card = getCard_subtract(request)
-    elif operator == '*':
-        card = getCard_multiply(request)
-    elif operator == '/':
-        card = getCard_divide(request)
-    elif operator == 'random':
-        card = getCard_randomOp(request)
-    else:
-        return HttpResponseBadRequest("Invalid operator")
-    
-    response = f"""
-    {card.lhs} {card.operator} {card.rhs} = {card.result}
-    """
-    return HttpResponse(response)
 
 
 def getCard_add(request):

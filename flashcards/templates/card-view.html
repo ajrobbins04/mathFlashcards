@@ -1,12 +1,8 @@
 <!-- displays flashcard content -->
 {% extends 'base.html' %}
 
-{% block title %}Flashcard Review{% endblock title %}
+{% block title %} {{operation}} Practice {% endblock title %}
 
 {% block content %}
-<ul>
-    {% for row in rows %}
-    <li>{{row.lhs}}  {{row.operator}}  {{row.rhs}}  =  {{row.result}}</li>
-    {% endfor %}
-</ul>
+<p>{{lhs}} {{operator}} {{rhs}}</p>
 {% endblock content %}
