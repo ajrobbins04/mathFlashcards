@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.http import HttpResponse, HttpResponseBadRequest
 
 from cards.models import *  
@@ -11,7 +11,14 @@ def index(request):
     return viewCard(request)
 
 def viewData(request):
-    rows = Subtract.objects.all()
+    data = Subtract.objects.all()
+
+    context = {
+        'rows': data
+    }
+
+    HTML_STRING = render_to_string('card-view.html', context=context)
+    return HttpResponse(HTML_STRING)
  
 
 
