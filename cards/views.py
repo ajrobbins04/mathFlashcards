@@ -7,7 +7,7 @@ import random
 
 def index(request):
 
-    HTML_STRING = render_to_string('cards/home-view.html')
+    HTML_STRING = render_to_string('cards/menu-view.html')
     return HttpResponse(HTML_STRING)
 
 
