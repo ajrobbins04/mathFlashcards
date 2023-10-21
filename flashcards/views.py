@@ -28,7 +28,7 @@ def viewCard(request, operation):
     
     # makes templates more dynamic
     context = {
-        'operation': operation.capitalize(),
+        'operation': operation,
         'lhs': card.lhs,
         'operator': card.operator,
         'rhs': card.rhs,
@@ -76,9 +76,11 @@ def getCard_divide(request):
 
     return card
 
-# returns a card from one of the 4 operations at random
+# user solves expressions whose operators were selected at random
 def getCard_randomOp(request):
 
+    # each operator has a 25% chance of being chosen
+    # to place an expression on the card.
     randomOp = random.randint(1, 4)
 
     if randomOp == 1:

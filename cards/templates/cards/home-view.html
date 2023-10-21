@@ -1,5 +1,5 @@
 <!-- displays home page content -->
-{% extends 'base.html' %}
+{% extends 'cards/base.html' %}
 
 {% block title %}Flashcard Selection{% endblock title %}
 
@@ -11,6 +11,6 @@
     <li><a href="{% url 'view_card' operation='subtraction' %}">Subtraction</a></li>
     <li><a href="{% url 'view_card' operation='multiplication' %}">Multiplication</a></li>
     <li><a href="{% url 'view_card' operation='division' %}">Division</a></li>
-    <li><a href="{% url 'view_card' operation='everything' %}">Everything!</a></li>
+    <li><a href="{% url 'view_card' operation='all' %}">Mixed Operations</a></li>
 </ul>
 {% endblock content %}

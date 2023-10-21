@@ -1,8 +1,8 @@
 from django.db import models
 
 """
-Stores all mathematical computations that
-will be used to create flashcards. 
+Stores all the mathematical expressions 
+that will be used to create flashcards. 
 """
 
 # smallest row corresponds to 1 + 1 = 2

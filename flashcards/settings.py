@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'flashcards/templates'
+            BASE_DIR / 'cards/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
