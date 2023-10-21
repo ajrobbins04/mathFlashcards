@@ -5,7 +5,7 @@ from cards.models import *
 import random
 
 
-def index(request):
+def menu(request):
 
     HTML_STRING = render_to_string('cards/menu-view.html')
     return HttpResponse(HTML_STRING)

@@ -5,11 +5,12 @@
 
 {% block content %}
 <h1>{{operation}} Flashcards Practice</h1>
-<h2>Problem /</h2>
-<p>{{lhs}} {{operator}} {{rhs}}</p>
-<form>
-    <label for="query">Enter the result here:</label>
-    <input type="text", name="query"/>
-    <input type="submit"/>
-</form>
+<div class="card-effect">
+    <h2> Card /</h2>
+    <form>
+        <label for="query">{{lhs}} {{operator}} {{rhs}} = </label>
+        <input type="text", name="query"/>
+        <input type="submit"/>
+    </form>
+</div>
 {% endblock content %}

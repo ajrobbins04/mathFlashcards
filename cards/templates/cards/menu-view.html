@@ -4,13 +4,16 @@
 {% block title %}Flashcard Selection{% endblock title %}
 
 {% block content %}
-<h1>What would you like to practice?</h1>
-<ul>
-    <!-- operation is passed into view_card w/an operation value unique to the selected link -->
-    <li><a href="{% url 'view_card' operation='addition' %}">Addition</a></li>
-    <li><a href="{% url 'view_card' operation='subtraction' %}">Subtraction</a></li>
-    <li><a href="{% url 'view_card' operation='multiplication' %}">Multiplication</a></li>
-    <li><a href="{% url 'view_card' operation='division' %}">Division</a></li>
-    <li><a href="{% url 'view_card' operation='all' %}">Mixed Operations</a></li>
-</ul>
+<h1>Math Flashcards</h1>
+<div class="card-effect">
+    <h2>Please select a practice option:</h2>
+    <ul>
+        <!-- operation is passed into view_card w/an operation value unique to the selected link -->
+        <li><a href="{% url 'view_card' operation='addition' %}">Addition</a></li>
+        <li><a href="{% url 'view_card' operation='subtraction' %}">Subtraction</a></li>
+        <li><a href="{% url 'view_card' operation='multiplication' %}">Multiplication</a></li>
+        <li><a href="{% url 'view_card' operation='division' %}">Division</a></li>
+        <li><a href="{% url 'view_card' operation='all' %}">Mixed Operations</a></li>
+    </ul>
+</div>
 {% endblock content %}
