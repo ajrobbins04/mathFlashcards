@@ -1,16 +1,17 @@
 <!-- displays flashcard content -->
 {% extends 'templates/base.html' %}
 
-{% block title %} Flashcards Practice | {{operation}} {% endblock title %}
+{% block title %} Practice Flashcards | {{operation}} {% endblock title %}
 
 {% block content %}
-<h1>{{operation}} Flashcards Practice</h1>
-<div class="card-effect">
-    <h2> Card /</h2>
-    <form>
+<h1>Practice {{operation}} Flashcards</h1>
+<div class="container">
+    <h2> /</h2>
+    <form action="{% url 'view_result' %}" method="post">
+        {% csrf_token %} <!-- hidden input template tag as security precaution -->
         <label for="query">{{lhs}} {{operator}} {{rhs}} = </label>
-        <input type="text", name="query"/>
-        <input type="submit"/>
+        <input type="text" name="query"/>
+        <input class="button" type="submit" name="userInput" value="Submit"/>
     </form>
 </div>
 {% endblock content %}

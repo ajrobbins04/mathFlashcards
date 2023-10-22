@@ -5,10 +5,10 @@
 
 {% block content %}
 <h1>Math Flashcards</h1>
-<div class="card-effect">
-    <h2>Please select a practice option:</h2>
+<div class="container">
+    <h2>Select a practice option:</h2>
     <ul>
-        <!-- operation is passed into view_card w/an operation value unique to the selected link -->
+        <!-- operation is passed into viewCard method w/a value unique to the selected link -->
         <li><a href="{% url 'view_card' operation='addition' %}">Addition</a></li>
         <li><a href="{% url 'view_card' operation='subtraction' %}">Subtraction</a></li>
         <li><a href="{% url 'view_card' operation='multiplication' %}">Multiplication</a></li>

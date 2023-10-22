@@ -19,7 +19,7 @@ from django.urls import include, path
 from cards import views
 
 urlpatterns = [
-    # cards handle all url paths starting at the root
-    path('', include("cards.urls"), name='cards'),
+    # cards app handles all url paths starting at the root
+    path('', include("cards.urls"), name='cards'), # give url a name to reference it by
     path('admin/', admin.site.urls),
 ]
