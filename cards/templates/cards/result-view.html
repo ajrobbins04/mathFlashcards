@@ -14,10 +14,10 @@
     <p>The correct answer is <span class="expression">{{result}}</span></p>
     {% endif %}
     {% if cardNum != 5 %}
-    <a href="{% url 'view_card' operation=operation %}">Next Flashcard >></a>
+    <a class="blue-link" href="{% url 'view_card' operation=operation %}">Next Flashcard >></a>
     {% else %}
     <p>Congratulations, you answered {{numCorrect}} out of 5 cards correctly!</p>
-    <a href="{% url 'menu' %}">Back to Main Menu</a>
+    <a class="blue-link" href="{% url 'menu' %}">Back to Main Menu</a>
     {% endif %}
 </div>
 {% endblock content %}
