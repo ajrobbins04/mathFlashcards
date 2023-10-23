@@ -1,3 +1,4 @@
+""" cards/views.py """
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest
 
@@ -7,28 +8,37 @@ import random
 
 def menu(request): # request is an obj containing info about the sent HTTP request
 
+    # will be used to track user's progress while working through flashcard set
+    request.session['cardNum'] = 0
+    request.session['numCorrect'] = 0
+
     # shows a list of links corresponding to flashcard selection options
     return render(request, 'cards/menu-view.html')
 
 # shows an expression (w/o the result) on a flashcard
 def viewCard(request, operation):
 
-    if operation == 'addition':
+    if operation == 'Addition':
         card = getCard_add()
-    elif operation == 'subtraction':
+    elif operation == 'Subtraction':
         card = getCard_subtract()
-    elif operation == 'multiplication':
+    elif operation == 'Multiplication':
         card = getCard_multiply()
-    elif operation == 'division':
+    elif operation == 'Division':
         card = getCard_divide()
-    elif operation == 'all':
+    elif operation == 'All':
         card = getCard_randomOp()
     else:
         return HttpResponseBadRequest("Invalid operation")
-    
+
+    cardNum = request.session['cardNum']
+    cardNum += 1
+    request.session['cardNum'] = cardNum
+
     # makes templates more dynamic
     context = {
-        'operation': operation.capitalize(),
+        'cardNum': cardNum,
+        'operation': operation,
         'lhs': card.lhs,
         'operator': card.operator,
         'rhs': card.rhs,
@@ -41,11 +51,27 @@ def viewCard(request, operation):
 def viewResult(request): 
     
     if request.method == 'POST':
-        query = request.POST.get('query') 
+        data = request.POST 
+
+        cardNum = request.session['cardNum']
+        numCorrect = request.session['numCorrect']
+
+        if data['userAnswer'] == data['result']:
+            numCorrect = request.session['numCorrect']
+            numCorrect += 1
+            request.session['numCorrect'] = numCorrect
+
         context = {
-            'query': query,
+            'cardNum': cardNum,
+            'numCorrect': numCorrect,
+            'operation': data['operation'],
+            'lhs': data['lhs'],
+            'operator': data['operator'],
+            'rhs': data['rhs'],
+            'result': data['result'],
+            'userAnswer': data['userAnswer']
         }
-        return render(request, 'cards/result-view.html')
+        return render(request, 'cards/result-view.html', context)
     
     else:
         return HttpResponse('ERROR: Form could not be submitted.')

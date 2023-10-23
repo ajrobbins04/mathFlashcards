@@ -10,8 +10,6 @@
     <style>
         /* some custom css */
         body {
-            display: grid; 
-            grid-template-columns: 1fr;
             text-align: center;
             background-color: #FFFEFC;
         }
@@ -22,10 +20,6 @@
             border-bottom: 2px solid #366A98;
         }
         
-        h2 {
-            margin-bottom: 2rem;
-        }
-
         li {
             cursor: pointer;
             font-size: 20px;
@@ -35,12 +29,13 @@
         a {
             text-decoration: none; 
             color: #212529;
+            font-weight: bold;
         }
 
-        label {
+        .expression {
+            color: #366A98;
             font-size: 28px;
             font-weight: bold;
-            color: #366A98;
         }
 
         input {
@@ -49,13 +44,12 @@
             margin: 0.75rem;
         }
 
-        a:hover {
-            color: #366A98;
+        .container {
+            text-align: start;
         }
 
-        .container {
-            text-align:left;
-        }
+        h2      { margin-bottom: 2rem; }
+        a:hover { color: #366A98;    }
 
     </style>
 </head>

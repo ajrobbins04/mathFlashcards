@@ -6,12 +6,19 @@
 {% block content %}
 <h1>Practice {{operation}} Flashcards</h1>
 <div class="container">
-    <h2> /</h2>
+    <h2>Flashcard {{cardNum}} / 5</h2>
     <form action="{% url 'view_result' %}" method="post">
         {% csrf_token %} <!-- hidden input template tag as security precaution -->
-        <label for="query">{{lhs}} {{operator}} {{rhs}} = </label>
-        <input type="text" name="query"/>
-        <input class="button" type="submit" name="userInput" value="Submit"/>
+        <input type="hidden" name="cardNum" value="{{ cardNum }}">
+        <input type="hidden" name="operation" value="{{ operation }}">
+        <input type="hidden" name="lhs" value="{{ lhs }}">
+        <input type="hidden" name="operator" value="{{ operator }}">
+        <input type="hidden" name="rhs" value="{{ rhs }}">
+        <input type="hidden" name="result" value="{{ result }}">
+        <!-- displays the expression to get user's input -->
+        <label class="expression" for="userAnswer">{{lhs}} {{operator}} {{rhs}} = </label>
+        <input type="text" name="userAnswer"/>
+        <input class="button" type="submit" name="userSubmit" value="Submit"/>
     </form>
 </div>
 {% endblock content %}
