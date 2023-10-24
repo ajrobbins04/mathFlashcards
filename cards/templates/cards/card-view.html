@@ -6,7 +6,7 @@
 {% block content %}
 <h1>Practice {{operation}} Flashcards</h1>
 <div class="container">
-    <h2>Flashcard {{cardNum}} / 5</h2>
+    <h2>Flashcard {{cardNum}} / 3</h2>
     <form action="{% url 'view_result' %}" method="post">
         {% csrf_token %} <!-- hidden input template tag as security precaution -->
         <input type="hidden" name="cardNum" value="{{ cardNum }}">

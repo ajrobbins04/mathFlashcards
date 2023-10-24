@@ -6,18 +6,18 @@
 {% block content %}
 <h1>{{operation}} Flashcards Result</h1>
 <div class="container">
-    <h2>Flashcard {{cardNum}} / 5</h2>
+    <h2>Flashcard {{cardNum}} / 3</h2>
     {% if userAnswer == result %}
     <p class="expression">{{lhs}} {{operator}} {{rhs}} = <span class="correct">{{result}} ✅</span></p>
     {% else %}
     <p class="expression">{{lhs}} {{operator}} {{rhs}} = <span class="incorrect">{{userAnswer}} ❌</span></p>
     <p>The correct answer is <span class="expression">{{result}}</span></p>
     {% endif %}
-    {% if cardNum != 5 %}
-    <a class="blue-link" href="{% url 'view_card' operation=operation %}">Next Flashcard >></a>
+    {% if cardNum != 3 %}
+    <a class href="{% url 'view_card' operation=operation %}">Next Flashcard >></a>
     {% else %}
     <p>Congratulations, you answered {{numCorrect}} out of 5 cards correctly!</p>
-    <a class="blue-link" href="{% url 'menu' %}">Back to Main Menu</a>
+    <a href="{% url 'menu' %}">Back to Main Menu</a>
     {% endif %}
 </div>
 {% endblock content %}
